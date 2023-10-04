@@ -15,18 +15,25 @@ public class Solution {
     if (array == null) {
       return array;
     }
+    // if (array.length == 1) {
+    //   return new int[] {array[0], array[0]};
+    // }
+    // if (array.length == 2) {
+    //   return new int[] {array[0] > array[1] ? array[0] : array[1], array[0] > array[1] ? array[1] : array[0]};
+    // }
 
     int[] ans = new int[2];
     int n = array.length;
 
     for (int i = 0; i < n / 2; i++) {
-      if (array[i] > array[n - 1]) {
-        swap(array, i, n - 1);
+      if (array[i] > array[n - i - 1]) {
+        swap(array, i, n - i - 1);
       }
     }
+   
 
     ans[0] = findLargest(array, n / 2, n - 1);
-    ans[1] = findSmallest(array, 0, (n - 1) / 2);
+    ans[1] = findSmallest(array, 0, n / 2);
 
     return ans;
   }
@@ -59,3 +66,5 @@ public class Solution {
 }
 
 // TC: O(1.5n); SC: O(1)
+
+
